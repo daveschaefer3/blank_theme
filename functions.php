@@ -64,4 +64,20 @@ function shape_setup() {
 endif; // shape_setup
 add_action( 'after_setup_theme', 'shape_setup' );
 
-// apparently this file isn't supposed to have a closing php tag but i'm skeptical...
+/**
+ * Enqueue scripts and styles
+ */
+function shape_scripts() {
+    wp_enqueue_style( 'style', get_stylesheet_uri() );
+ 
+    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+        wp_enqueue_script( 'comment-reply' );
+    }
+ 
+    if ( is_singular() && wp_attachment_is_image() ) {
+        wp_enqueue_script( 'keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'shape_scripts' );
+// apparently this file isn't supposed to have a closing php tag but i'm skeptical... 
+// Actuallly, on looking into more it seems like it'd be fine
