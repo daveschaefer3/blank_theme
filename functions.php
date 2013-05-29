@@ -81,7 +81,31 @@ function shape_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'shape_scripts' );
 
-
+/**
+ * Register widgetized area and update sidebar with default widgets
+ *
+ * @since Shape 1.0
+ */
+function shape_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Primary Widget Area', 'shape' ),
+        'id' => 'sidebar-1',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h1 class="widget-title">',
+        'after_title' => '</h1>',
+    ) );
+ 
+    register_sidebar( array(
+        'name' => __( 'Secondary Widget Area', 'shape' ),
+        'id' => 'sidebar-2',
+        'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+        'after_widget' => '</aside>',
+        'before_title' => '<h1 class="widget-title">',
+        'after_title' => '</h1>',
+    ) );
+}
+add_action( 'widgets_init', 'shape_widgets_init' );
 
 // apparently this file isn't supposed to have a closing php tag but i'm skeptical... 
 // Actuallly, on looking into more it seems like it'd be fine
