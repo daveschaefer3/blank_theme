@@ -80,5 +80,8 @@ function shape_scripts() {
     }
 }
 add_action( 'wp_enqueue_scripts', 'shape_scripts' );
+
+
+
 // apparently this file isn't supposed to have a closing php tag but i'm skeptical... 
 // Actuallly, on looking into more it seems like it'd be fine
