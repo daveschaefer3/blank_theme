@@ -11,8 +11,9 @@
  *
  * @since Shape 1.0
  */
-if ( ! isset( $content_width ) )
+if ( ! isset( $content_width ) ) {
     $content_width = 654; /* pixels */
+}
 
 if ( ! function_exists( 'shape_setup' ) ):
 /**
